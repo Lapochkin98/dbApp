@@ -6,6 +6,63 @@
         xmlns:local="clr-namespace:dbApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" SizeToContent="WidthAndHeight">
+
+    <Window.Resources>
+        <!-- Главный стиль окна (фона) -->
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="#121212" />
+        </Style>
+
+        <!-- Стиль для текста -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <!-- Стиль для меню -->
+        <Style TargetType="Menu">
+            <Setter Property="Background" Value="#121212" />
+        </Style>
+
+        <!-- Стиль для MenuItem -->
+        <Style TargetType="MenuItem">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#121212" />
+        </Style>
+
+        <!-- Стиль для DataGrid -->
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="#121212" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="#292929" />
+            <Setter Property="RowBackground" Value="#1E1E1E" />
+            <Setter Property="AlternatingRowBackground" Value="#1E1E1E" />
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#292929" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="#292929" />
+        </Style>
+
+        <!-- Стиль для самой левой (нулевой) колонки -->
+        <Style TargetType="DataGridCell" x:Key="LeftColumnStyle">
+            <Setter Property="Background" Value="#292929" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <!-- Стиль для ячеек в самой левой (нулевой) колонке -->
+        <Style TargetType="DataGridCell">
+            <Setter Property="Background" Value="#292929" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <!-- Стиль для StatusBar -->
+        <Style TargetType="StatusBar">
+            <Setter Property="Background" Value="#292929" />
+        </Style>
+    </Window.Resources>
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -13,14 +70,24 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <Button Content="Выполнить запрос 1" Click="ExecuteQuery1" Margin="5" />
-            <Button Content="Выполнить запрос 2" Click="ExecuteQuery2" Margin="5" />
-            <Button Content="Выполнить запрос 3" Click="ExecuteQuery3" Margin="5" />
-            <Button Content="Выполнить запрос 4" Click="ExecuteQuery4" Margin="5" />
-        </StackPanel>
+        <!-- Меню с пунктами -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="Запросы">
+                <MenuItem Header="Выполнить запрос 1" Click="ExecuteQuery1" />
+                <MenuItem Header="Выполнить запрос 2" Click="ExecuteQuery2" />
+                <MenuItem Header="Выполнить запрос 3" Click="ExecuteQuery3" />
+                <MenuItem Header="Выполнить запрос 4" Click="ExecuteQuery4" />
+            </MenuItem>
+            <MenuItem Header="Другие операции">
+                <MenuItem Header="Операция 1"  />
+                <MenuItem Header="Операция 2"  />
+                <MenuItem Header="Операция 3"  />
+                <MenuItem Header="Операция 4"  />
+                <MenuItem Header="Операция 5"  />
+            </MenuItem>
+        </Menu>
 
-        <DataGrid x:Name="dataGrid" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <DataGrid x:Name="dataGrid" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CellStyle="{StaticResource LeftColumnStyle}" />
 
         <StatusBar Grid.Row="2" HorizontalAlignment="Stretch">
             <StatusBarItem>
